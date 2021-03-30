@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "354874220819",
+    "project_id": "doan2-caf5e",
+    "storage_bucket": "doan2-caf5e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:354874220819:android:b75efdace2993de4647ae6",
+        "android_client_info": {
+          "package_name": "com.doan2_reactnative"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "354874220819-ltj0s6d2gp54djhvfeobjdl87koov3a5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGB4r8E411ZkxSe_w-7GlaWHMplE-1B9s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "354874220819-ltj0s6d2gp54djhvfeobjdl87koov3a5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
