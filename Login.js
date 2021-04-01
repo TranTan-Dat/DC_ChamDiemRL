@@ -24,8 +24,6 @@ export default class Login extends Component {
  
       shoot = async () => 
       {
-      
-
         const {Username,mssv,pass, Password} = this.state;
         const data = await firestore().collection('sinhvien').doc(Username).get().then(snap => { console.log(snap.data())
         this.setState({
@@ -36,8 +34,9 @@ export default class Login extends Component {
          console.log(pass);
 // prettier eslint
         })
-        if(this.state.Username != null && this.state.Password != null){
+        if(this.state.Username !== null && this.state.Password !== null){
           if((this.state.Username === this.state.mssv) && (this.state.Password === this.state.pass)){
+            alert("Dang nhap thanh cong")
             const {navigate} = this.props.navigation;
             navigate('LoadDB');
             //console.log("thanh cong");

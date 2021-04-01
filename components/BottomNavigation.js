@@ -10,14 +10,14 @@ const Tab = createBottomTabNavigator();
 
 export default function BottomNavigation() {
   return (
-    <
+    
       <Tab.Navigator
         tabBarOptions={{
           activeTintColor: 'tomato',
           inactiveTintColor: 'gray',
         }}
       >
-        <Tab.Screen name="logout" component={} />
+        <Tab.Screen name="logout" component={Login} />
       </Tab.Navigator>
   );
 }

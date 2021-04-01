@@ -7,16 +7,10 @@ import LoadDB from "./LoadDB";
 import Login from "./Login";
 
 
-  const Stack = createStackNavigator();
-  function App() {
+  function ChamDiem() {
     return (
-      <NavigationContainer >
-        <Stack.Navigator headerMode='none' initialRouteName="Login">
-          <Stack.Screen  name="Login" component={Login} />
-          <Stack.Screen headerMode='' name="LoadDB" component={LoadDB} />
-        </Stack.Navigator>
-      </NavigationContainer>
+        <View><Text>asdasdasda</Text></View>
     );
   }
   
-  export default App;
+  export default ChamDiem;
