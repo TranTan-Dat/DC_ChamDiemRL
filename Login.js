@@ -3,7 +3,8 @@ import { StyleSheet, SafeAreaView, Text, View, TextInput, Button,Image, ImageBac
 import {StackNavigator} from 'react-navigation';
 import {useNavigation} from "@react-navigation/native";
 import firestore  from '@react-native-firebase/firestore';
-
+import {NavigationContainer} from '@react-navigation/native';
+ 
 const heightS = Dimensions.get("screen").height;
 
 export default class Login extends Component {
@@ -27,8 +28,8 @@ export default class Login extends Component {
         const {Username,mssv,pass, Password} = this.state;
         const data = await firestore().collection('sinhvien').doc(Username).get().then(snap => { console.log(snap.data())
         this.setState({
-         mssv: snap.data().mssv,
-         pass: snap.data().pass
+         mssv: snap.data().MSSV,
+         pass: snap.data().PASS
          })
          console.log(mssv);
          console.log(pass);

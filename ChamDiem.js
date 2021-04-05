@@ -7,9 +7,11 @@ import LoadDB from "./LoadDB";
 import Login from "./Login";
 
 
-  function ChamDiem() {
+  const ChamDiem = () => {
     return (
-        <View><Text>asdasdasda</Text></View>
+        <NavigationContainer>
+          
+        </NavigationContainer>
     );
   }
   

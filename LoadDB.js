@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
 import { StyleSheet, SafeAreaView, Text, View, Image} from "react-native"
 //import { View, Text, Button } from 'react-native';
+import 'react-native-gesture-handler';
+
 import firestore  from '@react-native-firebase/firestore';
+import Icon from 'react-native-vector-icons/Ionicons';
+Icon.loadFont();
 
 export default class LoadDB extends Component {
   
@@ -13,13 +17,14 @@ export default class LoadDB extends Component {
       BacDaoTao:"",
       ChuyenNganh: "",
       Lop: " ",
-      MSSV: " ",
+      Mssv: " ",
       NgaySinh: " ",
       NoiSinh: "",
-      HoTen: " ", 
+      HoTen: " ",   
       DiaChi:"",
       GioiTinh:"",
-      Khoa:""
+      Khoa:"",
+      Sdt:""
       
     }
   }
@@ -37,12 +42,13 @@ export default class LoadDB extends Component {
                 GioiTinh: doc.data().GIOITINH,
                 ChuyenNganh: doc.data().CHUYENNGANH,
                 Lop: doc.data().LOP,
-                MSSV: doc.data().MSSV,
+                Mssv: doc.data().MSSV,
                 NgaySinh: doc.data().NGAYSINH,
                 NoiSinh: doc.data().NOISINH,
                 HoTen: doc.data().HOTEN, 
                 DiaChi:doc.data().DIACHI,
-                Khoa:doc.data().KHOA
+                Khoa:doc.data().KHOA,
+                Sdt: doc.data().SDT
               }
             }
           )
@@ -55,16 +61,17 @@ export default class LoadDB extends Component {
         }
           render() {
               return (
-                <View style={{width:'100%', height:'98%', }}>
+                <View style={{width:'100%', height:'98%' }}>
                   <View style={styles.flexcontainer}>
                     <View style={styles.Top} >
-                      <Image source={ require('./rsc/images/Chi_Nguyen.png')} style={styles.img} />
+                      <Image source={ require('./rsc/images/TranDat.png')} style={styles.img} />
                       <Text style={styles.Name}>{this.state.sinhvien.HoTen}</Text>
+                      <Text style={styles.Value}>{this.state.sinhvien.Mssv}</Text>
+
                     </View>
                     <View style={styles.bottom}>
                       <View style={styles.flexBottomInform}>
                         <View style={styles.BottomInformLeft}>
-                          <Text style={styles.Title}>MSSV: </Text>
                           <Text style={styles.Title}>Trạng thái: </Text>
                           <Text style={styles.Title}>Giới tính: </Text>
                           <Text style={styles.Title}>Ngày sinh: </Text>
@@ -74,6 +81,7 @@ export default class LoadDB extends Component {
                           <Text style={styles.Title}>Khoa: </Text>
                           <Text style={styles.Title}>Chuyên ngành: </Text>
                           <Text style={styles.Title}>Địa chỉ: </Text>
+                          <Text style={styles.Title}></Text>
                           <Text style={styles.Title}>Số điện thoại: </Text>
                           <Text style={styles.Title}>Nơi sinh: </Text>
                           <Text style={styles.Title}>Điểm rèn luyện: </Text>
@@ -81,13 +89,18 @@ export default class LoadDB extends Component {
                         <View style={styles.BottomInformRight}>
                           <Text style={styles.Value}>{this.state.sinhvien.TrangThai}</Text>
                           <Text style={styles.Value}>{this.state.sinhvien.GioiTinh}</Text>
-                          
+                          <Text style={styles.Value}>{this.state.sinhvien.NgaySinh}</Text>
+                          <Text style={styles.Value}>{this.state.sinhvien.Mssv}</Text>
+                          <Text style={styles.Value}>{this.state.sinhvien.Lop}</Text>
+                          <Text style={styles.Value}>{this.state.sinhvien.BacDaoTao}</Text>
+                          <Text style={styles.Value}>{this.state.sinhvien.Khoa}</Text>
+                          <Text style={styles.Value}>{this.state.sinhvien.ChuyenNganh}</Text>
+                          <Text style={styles.Value}>{this.state.sinhvien.DiaChi}</Text>
+                          <Text style={styles.Value}>{this.state.sinhvien.Sdt}</Text>
+                          <Text style={styles.Value}>{this.state.sinhvien.NoiSinh}</Text>
+                          <Text><Icon name="ios-person" size={30} color="#4F8EF7" /></Text>
                         </View>
                       </View>
-                      {/* <Text> Họ tên: {this.state.sinhvien.hoten} </Text>
-                      <Text> Ngày sinh: {this.state.sinhvien.NgaySinh} </Text>
-                      <Text> Mã số sinh vien: {this.state.sinhvien.mssv} </Text>
-                      <Text> Lớp: {this.state.sinhvien.Lop} </Text> */}
                     </View>
                   </View>
                 </View>
@@ -96,7 +109,7 @@ export default class LoadDB extends Component {
 }
 const styles= StyleSheet.create({
   Top:{
-    height: '40%',
+    height: '35%',
     alignItems:'center',
     marginTop:15
   },
@@ -105,8 +118,7 @@ const styles= StyleSheet.create({
     borderRadius: 360   
   },
   bottom:{
-    height:'60%',
-    backgroundColor:'blue'
+    height:'65%',
   },
   flexcontainer: {
     flex: 1,
@@ -116,21 +128,23 @@ const styles= StyleSheet.create({
     flexDirection: "row"
   },
   BottomInformLeft:{
-    width:'38%', backgroundColor:'pink', marginLeft:'2%'
+    width:'38%',  marginLeft:'2%'
   },
   BottomInformRight:{
-    width:'58%', backgroundColor:'yellow',
+    width:'58%',
+    fontSize:20,
+    padding:3,
   },
   Name:{
     fontSize:30
   },
   Title:{
     fontSize:20,
-    padding:6,
+    padding:3,
+    color:'green'
   },
   Value:{
     fontSize:20,
-    padding:6,
+    padding:3,
   }
-}
-)
+})
