@@ -26,8 +26,7 @@ export default class Login extends Component {
     this.state = {
       Username: '',
       Password: '',
-      mssv: '',
-      pass: '',
+      PasswordAgain:'',
     };
   }
 
@@ -37,34 +36,28 @@ export default class Login extends Component {
   }
 
 
-  shoot = async () => {
+  Create = async () => {
     const {Username, mssv, pass, Password} = this.state;
-
-    if (this.state.Username.trim() && this.state.Password.trim()) {
-      const data = await firestore()
-        .collection('sinhvien')
-        .doc(Username)
-        .get()
-        .then(snap => {
-          console.log(snap.data());
-          this.setState({
-            mssv: snap.data().MSSV,
-            pass: snap.data().PASS,
-          });
-          console.log(mssv);
-          console.log(pass);
-        });
-
+    //Không cho để trống
+    if (this.state.Username.trim() && this.state.Password.trim() && this.state.PasswordAgain.trim()) {
       if (
-        this.state.Username === this.state.mssv &&
-        this.state.Password === this.state.pass
+        this.state.Password === this.state.PasswordAgain
       ) {
-        alert('Dang nhap thanh cong');
-        const {navigate} = this.props.navigation;
-        navigate('LoadDB');
+        firestore()
+        .collection('sinhvien')
+        .doc(this.state.Username)
+        .set({
+          MSSV:(this.state.Username),
+          PASS:(this.state.Password)
+        })
+        .then(() => {
+          alert('User updated!');
+        });
+        // const {navigate} = this.props.navigation;
+        // navigate('LoadDB');
         //console.log("thanh cong");
       } else {
-        alert('Sai ten dang nhap hoac mat khau');
+        alert('Mật Khẩu và Nhập lại Mật Khẩu không khớp');
       }
     } else {
       alert('Xin nhap du thong tin');
@@ -83,7 +76,7 @@ export default class Login extends Component {
             source={require('./rsc/images/logo.png')}
             style={styles.image}
           />
-
+          <Text>Tạo Tài Khoản Sinh Viên</Text>
           <View style={styles.FormInputText}>
             <TextInput
               value={this.state.Username}
@@ -99,11 +92,17 @@ export default class Login extends Component {
               placeholder="Mật khẩu"
               placeholderTextColor="#264532"
               secureTextEntry={true}
-              onChangeText={(Password) => this.setState({Password})}
+              onChangeText={Password => this.setState({Password})}
             />
           </View>
-          <View style={{alignItems:'flex-end', color:'red'}}>
-          <TouchableOpacity onPress={this.TaoTK} ><Text style={{color:'red'}} >Tạo tài khoản mới</Text></TouchableOpacity>
+          <View style={styles.FormInputText}>
+            <TextInput
+              value={this.state.PasswordAgain}
+              placeholder="Nhâp lại mật khẩu"
+              placeholderTextColor="#264532"
+              secureTextEntry={true}
+              onChangeText={PasswordAgain => this.setState({PasswordAgain})}
+            />
           </View>
           <TouchableOpacity
             style={{
@@ -111,8 +110,8 @@ export default class Login extends Component {
               marginTop: 15,
               borderRadius: 30,
             }}
-            onPress={this.shoot}>
-            <Text style={styles.TextBtnDangNhap}>Đăng Nhập</Text>
+            onPress={this.Create}>
+            <Text style={styles.TextBtnDangNhap}>Đăng Ký</Text>
           </TouchableOpacity>
         </View>
       </ImageBackground>
