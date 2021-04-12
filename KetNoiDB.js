@@ -14,7 +14,7 @@ export default class FirebaseApp extends Component {
 constructor(props) {
   super(props);
   this.getten();
-  this.subscriber = firestore().collection('sinhvien').doc('1800647').onSnapshot(
+  this.subscriber = firestore().collection('SINHVIEN').doc('1800647').onSnapshot(
     doc => {
         this.setState(
           {

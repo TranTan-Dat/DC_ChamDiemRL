@@ -42,7 +42,7 @@ export default class Login extends Component {
 
     if (this.state.Username.trim() && this.state.Password.trim()) {
       const data = await firestore()
-        .collection('sinhvien')
+        .collection('SINHVIEN')
         .doc(Username)
         .get()
         .then(snap => {

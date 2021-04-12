@@ -3,23 +3,17 @@ import { StyleSheet, SafeAreaView, Text, View, Image, TouchableOpacity, Touchabl
 //import { View, Text, Button } from 'react-native';
 import 'react-native-gesture-handler';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import firestore  from '@react-native-firebase/firestore';
+import firestore from '@react-native-firebase/firestore';
 import Icon from 'react-native-vector-icons/Ionicons';
-
 import { BoxShadow } from "react-native-shadow";
+import { TextInput } from 'react-native-gesture-handler';
 
 Icon.loadFont();
 
-export default class LoadDB extends Component {
-  
-  state = 
-  {
-    sinhvien: 
+export default class SuaThongTin extends Component {
+  //tạo biến lưu giá trị nhập
+  state =
     {
-      TrangThai: "",
-      BacDaoTao:"",
-      ChuyenNganh: "",
-      Lop: " ",
       Mssv: " ",
       NgaySinh: " ",
       NoiSinh: "",
@@ -28,8 +22,6 @@ export default class LoadDB extends Component {
       GioiTinh:"",
       Khoa:"",
       Sdt:""
-      
-    }
   }
 
 
@@ -37,11 +29,11 @@ export default class LoadDB extends Component {
   {
     super(props);
     this.getten();
+    //load db lên 
     this.subscriber = firestore().collection('SINHVIEN').doc('1800647').onSnapshot(
       doc => {
           this.setState(
-            {  
-              sinhvien: {
+            { 
                 BacDaoTao: doc.data().BACDAOTAO,
                 GioiTinh: doc.data().GIOITINH,
                 ChuyenNganh: doc.data().CHUYENNGANH,
@@ -49,15 +41,26 @@ export default class LoadDB extends Component {
                 NgaySinh: doc.data().NGAYSINH,
                 HoTen: doc.data().HOTEN, 
                 Khoa:doc.data().KHOA,
-              }
+                Sdt: doc.data().SDT,
+                DiaChi: doc.data().DIACHI
             }
           )
       }
     )
   }
-        ChuynTrang = () => {
-          const {navigate} = this.props.navigation;
-          navigate('ThongTinChiTiet');
+        CapNhat = async () => {
+           firestore().collection('SINHVIEN').doc('1800647')
+           .update(
+                {
+                    //DIACHI: this.state.DiaChi
+                    DIACHI:(this.state.DiaChi),
+                }
+            )
+            .then(() => {
+            alert('User updated!');
+            const {navigate} = this.props.navigation;
+            navigate('LoadDB')
+            });
         }
         getten = async () => {
           const data = firestore().collection('SINHVIEN').doc('1800647').get().then(snap => console.log(snap.data()));
@@ -66,35 +69,26 @@ export default class LoadDB extends Component {
               return (
                   <View style={styles.flexcontainer}>
                     <View style={styles.Top} >
+                        <Text>Sửa thông tin</Text>
                       <Image source={ require('./rsc/images/TranDat.png')} style={styles.img} />
-                      <Text style={{fontSize:25}}>{this.state.sinhvien.HoTen}</Text>
-                      <Text style={{fontSize:20}}>{this.state.sinhvien.Mssv}</Text>
+                      <Text style={{fontSize:25}}>{this.state.HoTen}</Text>
+                      <Text style={{fontSize:20}}>{this.state.Mssv}</Text>
                     </View>
                     <View style={styles.bottom}>
                       <View style={styles.ThongTinChung}>
                         <View  style={styles.ThongTinChung_TungDong}>
-                          <Text style={styles.Title}>Giới tính:</Text>
-                          <Text style={styles.Value}>{this.state.sinhvien.GioiTinh}</Text>
+                          <Text style={styles.Title}>Địa chỉ:</Text>
+                            <TextInput
+                                style={styles.Value}
+                                onChangeText={DiaChi=> this.setState({DiaChi})}
+                                >{this.state.DiaChi}
+                            </TextInput>
                         </View>
-                        <View  style={styles.ThongTinChung_TungDong}>
-                          <Text style={styles.Title}>Ngày sinh:</Text>
-                          <Text style={styles.Value}>{this.state.sinhvien.NgaySinh}</Text>
                         </View>
-                        <View  style={styles.ThongTinChung_TungDong}>
-                          <Text style={styles.Title}>Khoa:</Text>
-                          <Text style={styles.Value}>{this.state.sinhvien.Khoa}</Text>
-                        </View>
-                        <View  style={styles.ThongTinChung_TungDong}>
-                          <Text style={styles.Title}>Chuyên Ngành:</Text>
-                          <Text style={styles.Value}>{this.state.sinhvien.ChuyenNganh}</Text>
-                        </View>
-                        <Text style={styles.Title}>Bậc Đào tạo:</Text>
-                          <Text style={styles.Value}>{this.state.sinhvien.BacDaoTao}</Text>
-                      </View>
-                      <View style={styles.ThongTinCHiTiet} onPress={this.shoot} >
+                      <View style={styles.CapNhat}>
                         <View styles={{textAlign: 'left'}}>
                         <TouchableOpacity style={{ marginTop:15, borderRadius:30 }} >
-                          <Text style={{textAlign: 'left'}} onPress={this.ChuynTrang}>Thông tin chi tiết <AntDesign name="right" size={18} color="white" /> </Text>
+                          <Text style={{textAlign: 'left'}} onPress={this.CapNhat}>Cập Nhật<AntDesign name="right" size={18} color="white" /> </Text>
                         </TouchableOpacity>
                         </View>
                       </View>
@@ -132,7 +126,7 @@ const styles= StyleSheet.create({
     borderBottomWidth:1, 
   }
   ,
-  ThongTinCHiTiet:{
+  CapNhat:{
     flex:0.6,width: '88%',
     borderRadius:30,
     backgroundColor:'green', marginBottom:60,

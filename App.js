@@ -7,17 +7,20 @@ import LoadDB from "./LoadDB";
 import Login from "./Login";
 import ThongTinChiTiet from "./ThongTinChiTiet";
 import ThemSinhVien from "./ThemSinhVien";
-
+import scrollView from "./scrollView";
+import SuaThongTin from "./SuaThongTin";
 
   const Stack = createStackNavigator();
   function App() {
     return (
       <NavigationContainer >
-        <Stack.Navigator headerMode='none' initialRouteName="ThemSinhVien">
+        <Stack.Navigator headerMode='none' initialRouteName="SuaThongTin">
           <Stack.Screen  name="Login" component={Login} />
           <Stack.Screen headerMode='' name="LoadDB" component={LoadDB} />
           <Stack.Screen name="ThongTinChiTiet" component={ThongTinChiTiet} />
           <Stack.Screen name="ThemSinhVien" component={ThemSinhVien} />
+          <Stack.Screen name="scrollView" component={scrollView} />
+          <Stack.Screen name="SuaThongTin" component={SuaThongTin} />
         </Stack.Navigator>
       </NavigationContainer>
     );

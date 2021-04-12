@@ -44,14 +44,14 @@ export default class Login extends Component {
         this.state.Password === this.state.PasswordAgain
       ) {
         firestore()
-        .collection('sinhvien')
+        .collection('SINHVIEN')
         .doc(this.state.Username)
         .set({
           MSSV:(this.state.Username),
           PASS:(this.state.Password)
         })
         .then(() => {
-          alert('User updated!');
+          alert('User created!');
         });
         // const {navigate} = this.props.navigation;
         // navigate('LoadDB');
