@@ -33,7 +33,7 @@ export default class trangmau extends Component {
     constructor(props) {
         super(props);
         this.getten();
-        this.subscriber = firestore().collection('GIANGVIEN').doc('2000537').onSnapshot(doc => {
+        this.subscriber = firestore().collection('GIANGVIEN').doc('gv_2000537').onSnapshot(doc => {
             this.setState({
                 giangvien: {
                     Hoten: doc.data().HOTEN,
@@ -49,7 +49,7 @@ export default class trangmau extends Component {
     }
 
     getten = async () => {
-        const data = firestore().collection('GIANGVIEN').doc('2000537').get().then(snap => console.log(snap.data()));
+        const data = firestore().collection('GIANGVIEN').doc('gv_2000537').get().then(snap => console.log(snap.data()));
     }
      
     render() {

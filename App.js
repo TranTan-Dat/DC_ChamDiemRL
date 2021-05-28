@@ -9,12 +9,15 @@ import ThongTinChiTiet from "./ThongTinChiTiet";
 import ThemSinhVien from "./ThemSinhVien";
 import scrollView from "./scrollView";
 import SuaThongTin from "./SuaThongTin";
+import ThongTinGiangVienCoChinhSua from "./ThongTinGiangVienCoChinhSua";
+import ThongTinGiangVien from "./ThongTinGiangVien";
+
 
   const Stack = createStackNavigator();
   function App() {
     return (
       <NavigationContainer >
-        <Stack.Navigator headerMode='none' initialRouteName="SuaThongTin">
+        <Stack.Navigator headerMode='none' initialRouteName="LoadDB">
           <Stack.Screen  name="Login" component={Login} />
           <Stack.Screen headerMode='' name="LoadDB" component={LoadDB} />
           <Stack.Screen name="ThongTinChiTiet" component={ThongTinChiTiet} />

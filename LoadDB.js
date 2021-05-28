@@ -37,7 +37,7 @@ export default class LoadDB extends Component {
   {
     super(props);
     this.getten();
-    this.subscriber = firestore().collection('SINHVIEN').doc('1800647').onSnapshot(
+    this.subscriber = firestore().collection('SINHVIEN').doc('sv_1800647').onSnapshot(
       doc => {
           this.setState(
             {  
@@ -60,7 +60,7 @@ export default class LoadDB extends Component {
           navigate('ThongTinChiTiet');
         }
         getten = async () => {
-          const data = firestore().collection('SINHVIEN').doc('1800647').get().then(snap => console.log(snap.data()));
+          const data = firestore().collection('SINHVIEN').doc('sv_1800647').get().then(snap => console.log(snap.data()));
         }
           render() {
               return (
