@@ -20,12 +20,18 @@ export default class trangmau extends Component {
     }
     state = {
         giangvien: {
-            Hoten: "",
-            Msns: "",
-            Gioitinh: "",
-            Ngaysinh: "",
-            Sdt: "",
-            Nganh: ""
+        DiaChi:"",
+        Email:"",
+        Gioitinh:"",
+        Hoten:"",
+        Msns:"",
+        Nganh:"",
+        Ngaysinh:"",
+        Sdt:""
+
+
+    
+
 
         }
     }
@@ -36,13 +42,14 @@ export default class trangmau extends Component {
         this.subscriber = firestore().collection('GIANGVIEN').doc('gv_2000537').onSnapshot(doc => {
             this.setState({
                 giangvien: {
+                    DiaChi: doc.data().DIACHI,
+                    Email: doc.data().EMAIL,
+                    Gioitinh: doc.data().GIOITINH,
                     Hoten: doc.data().HOTEN,
                     Msns: doc.data().MSNS,
-                    Gioitinh: doc.data().GIOITINH,
+                    Nganh: doc.data().NGANH,
                     Ngaysinh: doc.data().NGAYSINH,
-                    Sdt: doc.data().SDT,
-                    Email: doc.data().EMAIL,
-                    Nganh: doc.data().NGANH
+                    Sdt: doc.data().SDT
                 }
             })
         })
@@ -90,7 +97,7 @@ export default class trangmau extends Component {
                      
                         <View style={styles.khungavatar}>
                      
-                         <Image source={require('./rsc/images/Chi_Nguyen.png')}style={styles.avatar}/>
+                         <Image source={require('./rsc/images/user.png')}style={styles.avatar}/>
                         </View>
                     </ImageBackground>
 
@@ -122,9 +129,7 @@ export default class trangmau extends Component {
                                 <Text style={
                                     styles.noidungdong
                                 }>
-                                    {
-                                    this.state.giangvien.Hoten
-                                }
+                                    {this.state.giangvien.Hoten}
                                     <AntDesign name="arrow-right"
                                         size={15}
                                         color="black"/>
@@ -154,7 +159,8 @@ export default class trangmau extends Component {
                                 }>
                                     {
                                     this.state.giangvien.Msns
-                                } </Text>
+                                } 
+                                </Text>
                             </View>
                         </View>
                     </TouchableOpacity>
@@ -178,9 +184,9 @@ export default class trangmau extends Component {
                                 <Text style={
                                     styles.noidungdong
                                 }>
-                                    {
+                                    {/* {
                                     this.state.giangvien.Ngaysinh
-                                }
+                                } */}
                                     <AntDesign name="arrow-right"
                                         size={15}
                                         color="black"/>

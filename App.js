@@ -11,19 +11,29 @@ import scrollView from "./scrollView";
 import SuaThongTin from "./SuaThongTin";
 import ThongTinGiangVienCoChinhSua from "./ThongTinGiangVienCoChinhSua";
 import ThongTinGiangVien from "./ThongTinGiangVien";
+import DoiMatKhauGiangVien from "./DoiMatKhauGiangVien";
+import XacThucMatKhauGiangVien from "./XacThucMatKhauGiangVien";
+import SuaSdtGiangVien from "./SuaSdtGiangVien";
+// import ChonVaiTro from "./ChonVaiTro";
 
 
   const Stack = createStackNavigator();
   function App() {
     return (
       <NavigationContainer >
-        <Stack.Navigator headerMode='none' initialRouteName="LoadDB">
+        <Stack.Navigator headerMode='none' initialRouteName="scrollView">
           <Stack.Screen  name="Login" component={Login} />
-          <Stack.Screen headerMode='' name="LoadDB" component={LoadDB} />
+          <Stack.Screen name="LoadDB" component={LoadDB} />
           <Stack.Screen name="ThongTinChiTiet" component={ThongTinChiTiet} />
           <Stack.Screen name="ThemSinhVien" component={ThemSinhVien} />
           <Stack.Screen name="scrollView" component={scrollView} />
           <Stack.Screen name="SuaThongTin" component={SuaThongTin} />
+          <Stack.Screen name="ThongTinGiangVien" component={ThongTinGiangVien} />
+          <Stack.Screen name="ThongTinGiangVienCoChinhSua" component={ThongTinGiangVienCoChinhSua} />
+          <Stack.Screen name="DoiMatKhauGiangVien" component={DoiMatKhauGiangVien} />
+          <Stack.Screen name="XacThucMatKhauGiangVien" component={XacThucMatKhauGiangVien} />
+          <Stack.Screen name="SuaSdtGiangVien" component={SuaSdtGiangVien} />
+          {/* <Stack.Screen name="ChonVaiTro" component={ChonVaiTro} /> */}
         </Stack.Navigator>
       </NavigationContainer>
     );
