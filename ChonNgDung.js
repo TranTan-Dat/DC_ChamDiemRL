@@ -15,6 +15,7 @@ import {StackNavigator} from 'react-navigation';
 import {useNavigation} from '@react-navigation/native';
 import firestore from '@react-native-firebase/firestore';
 import {NavigationContainer} from '@react-navigation/native';
+import { greaterThan } from 'react-native-reanimated';
 
 const heightS = Dimensions.get('screen').height;
 
@@ -83,37 +84,22 @@ export default class Login extends Component {
             source={require('./rsc/images/logo.png')}
             style={styles.image}
           />
+        
+        <Text style={{paddingBottom:15}}>Bạn là Giảng viên hay sinh viên?</Text>
+        <Button
+          title="Giảng viên"
+          color="#841584"
+        />
+        <Text></Text>
+        <Button
+          title="Sinh viên"
+          color="#841584"
+        />
+        </View>
+        <View style={styles.button} >
+          <Text>
 
-          <View style={styles.FormInputText}>
-            <TextInput
-              value={this.state.Username}
-              placeholder="Tên đăng nhập"
-              placeholderTextColor="#264532"
-              onChangeText={Username => this.setState({Username})}
-            />
-          </View>
-
-          <View style={styles.FormInputText}>
-            <TextInput
-              value={this.state.Password}
-              placeholder="Mật khẩu"
-              placeholderTextColor="#264532"
-              secureTextEntry={true}
-              onChangeText={(Password) => this.setState({Password})}
-            />
-          </View>
-          <View style={{alignItems:'flex-end', color:'red'}}>
-          <TouchableOpacity onPress={this.TaoTK} ><Text style={{color:'red'}} >Tạo tài khoản mới</Text></TouchableOpacity>
-          </View>
-          <TouchableOpacity
-            style={{
-              backgroundColor: '#37871a',
-              marginTop: 15,
-              borderRadius: 30,
-            }}
-            onPress={this.shoot}>
-            <Text style={styles.TextBtnDangNhap}>Đăng Nhập</Text>
-          </TouchableOpacity>
+          </Text>
         </View>
       </ImageBackground>
       // </SafeAreaView>
@@ -133,20 +119,7 @@ const styles = StyleSheet.create({
     height: 300,
     alignItems: 'center',
   },
-  Input: {
-    color: '#111111',
-  },
-  FormInputText: {
-    borderRadius: 30,
-    borderWidth: 0.5,
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-    marginBottom: 15,
-    paddingLeft: 8,
-  },
-  TextBtnDangNhap: {
-    fontSize: 18,
-    color: 'white',
-    textAlign: 'center',
-    margin: 5,
-  },
+  button:{
+    color:'#5a9dbe'
+  }
 });

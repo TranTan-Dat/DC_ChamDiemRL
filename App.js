@@ -14,14 +14,16 @@ import ThongTinGiangVien from "./ThongTinGiangVien";
 import DoiMatKhauGiangVien from "./DoiMatKhauGiangVien";
 import XacThucMatKhauGiangVien from "./XacThucMatKhauGiangVien";
 import SuaSdtGiangVien from "./SuaSdtGiangVien";
+import ChonNgDung from "./ChonNgDung";
 // import ChonVaiTro from "./ChonVaiTro";
 
 
   const Stack = createStackNavigator();
   function App() {
     return (
-      <NavigationContainer >
-        <Stack.Navigator headerMode='none' initialRouteName="scrollView">
+      <NavigationContainer>
+        <Stack.Navigator headerMode='none' initialRouteName="ChonNgDung">
+          <Stack.Screen name="ChonNgDung" component={ChonNgDung}/>
           <Stack.Screen  name="Login" component={Login} />
           <Stack.Screen name="LoadDB" component={LoadDB} />
           <Stack.Screen name="ThongTinChiTiet" component={ThongTinChiTiet} />
