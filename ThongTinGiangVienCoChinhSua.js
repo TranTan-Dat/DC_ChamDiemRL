@@ -93,9 +93,11 @@ export default class trangmau extends Component {
                             {
                                 fontSize: 25,
                                 fontWeight: 'nomal',
-                                marginLeft: 10
+                                marginLeft: 10,
+                                
                             }
-                        }>Thông tin giảng viên</Text>
+                        }>
+                            Thông tin giảng viên</Text>
                     </View>
                 </View>
                 {/* khu vuc anh dai dien */}

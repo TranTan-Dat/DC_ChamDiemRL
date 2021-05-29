@@ -62,7 +62,7 @@ export default class Login extends Component {
         alert('Dang nhap thanh cong');
         const {navigate} = this.props.navigation;
         navigate('LoadDB');
-        //console.log("thanh cong");
+        console.log("thanh cong");
       } else {
         alert('Sai ten dang nhap hoac mat khau');
       }
